@@ -5,7 +5,8 @@ QUARKUS PROJECT START:
 2. brew update
 3. brew upgrade quarkus
 4. quarkus create app island-dev:code-with-rajib --gradle
-5. quarkus dev
+5. open -a docker [docker needs to be run sometime]
+6. quarkus dev
 ```
 
 ```
@@ -20,6 +21,6 @@ A. Dependencies:
 6. rest jackson for serialization
 
 B. Considerations:
-1. create a sql file(for us this is first.sql) and now we can make connection to \
+1. create a sql file(for us this is first.sql) and now we can make connection to
 database and we can see the jpa explorer.
 ```
