@@ -9,6 +9,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.quarkus:quarkus-smallrye-metrics'
+    implementation 'io.quarkus:quarkus-smallrye-health'
+    implementation 'io.quarkiverse.loggingmanager:quarkus-logging-manager:3.0.3'
     implementation 'io.quarkus:quarkus-cache'
     implementation 'io.quarkus:quarkus-flyway'
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
