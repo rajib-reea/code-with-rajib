@@ -17,6 +17,7 @@ A. Dependencies:
 3. cache
 4. flyway for migration files
 5. hibernate validator
+6. rest jackson for serialization
 
 B. Considerations:
 1. create a sql file(for us this is first.sql) and now we can make connection to \
