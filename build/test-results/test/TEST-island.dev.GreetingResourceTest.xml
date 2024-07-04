@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="island.dev.GreetingResourceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-04T19:41:32" hostname="rhp" time="1.571">
+  <properties/>
+  <testcase name="testHelloEndpoint()" classname="island.dev.GreetingResourceTest" time="1.571"/>
+  <system-out><![CDATA[2024-07-05 01:41:24,785 WARN  [io.qua.hib.orm.dep.HibernateOrmProcessor] (build-86) Hibernate ORM is disabled because no JPA entities were found
+2024-07-05 01:41:25,590 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-31) Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-07-05 01:41:26,213 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-31) Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-07-05 01:41:26,221 INFO  [org.tes.DockerClientFactory] (build-31) Docker host IP address is localhost
+2024-07-05 01:41:26,276 INFO  [org.tes.DockerClientFactory] (build-31) Connected to docker: 
+  Server Version: 24.0.2
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7851 MB
+2024-07-05 01:41:26,288 INFO  [org.tes.ima.PullPolicy] (build-31) Image pull policy will be performed by: DefaultPullPolicy()
+2024-07-05 01:41:26,290 INFO  [org.tes.uti.ImageNameSubstitutor] (build-31) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-07-05 01:41:26,297 INFO  [org.tes.DockerClientFactory] (build-31) Checking the system...
+2024-07-05 01:41:26,298 INFO  [org.tes.DockerClientFactory] (build-31) ✔︎ Docker server version should be at least 1.6.0
+2024-07-05 01:41:26,510 INFO  [tc.doc.io/postgres:14] (build-31) Creating container for image: docker.io/postgres:14
+2024-07-05 01:41:27,522 INFO  [org.tes.uti.RegistryAuthLocator] (build-31) Credential helper/store (docker-credential-desktop) does not have credentials for docker.io
+2024-07-05 01:41:27,535 WARN  [tc.doc.io/postgres:14] (build-31) Reuse was requested but the environment does not support the reuse of containers
+To enable reuse of containers, you must set 'testcontainers.reuse.enable=true' in a file located at /Users/rhp/.testcontainers.properties
+2024-07-05 01:41:27,537 INFO  [tc.tes.7.0] (build-31) Creating container for image: testcontainers/ryuk:0.7.0
+2024-07-05 01:41:27,712 INFO  [org.tes.uti.RegistryAuthLocator] (build-31) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-07-05 01:41:27,869 INFO  [tc.tes.7.0] (build-31) Container testcontainers/ryuk:0.7.0 is starting: 1a14c3a75cc84754a12a8e7f1b483e7de25bc6ee7c608a011f50673a60404003
+2024-07-05 01:41:28,560 INFO  [tc.tes.7.0] (build-31) Container testcontainers/ryuk:0.7.0 started in PT1.023127S
+2024-07-05 01:41:28,595 INFO  [tc.doc.io/postgres:14] (build-31) Container docker.io/postgres:14 is starting: 29ac6b26ebb6d04e729ef413301312f6c393be65ff67e34b05cc3b3f049001a8
+2024-07-05 01:41:30,514 INFO  [tc.doc.io/postgres:14] (build-31) Container docker.io/postgres:14 started in PT4.004157S
+2024-07-05 01:41:30,517 INFO  [tc.doc.io/postgres:14] (build-31) Container is started (JDBC URL: jdbc:postgresql://localhost:65244/quarkus?loggerLevel=OFF)
+2024-07-05 01:41:30,518 INFO  [io.qua.dev.pos.dep.PostgresqlDevServicesProcessor] (build-31) Dev Services for PostgreSQL started.
+2024-07-05 01:41:30,526 INFO  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-31) Dev Services for default datasource (postgresql) started - container ID is 29ac6b26ebb6
+2024-07-05 01:41:30,540 INFO  [io.qua.hib.orm.dep.dev.HibernateOrmDevServicesProcessor] (build-114) Setting quarkus.hibernate-orm.database.generation=drop-and-create to initialize Dev Services managed database
+2024-07-05 01:41:32,640 INFO  [io.quarkus] (Test worker) code-with-rajib 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.12.1) started in 11.809s. Listening on: http://localhost:8081
+2024-07-05 01:41:32,645 INFO  [io.quarkus] (Test worker) Profile test activated. 
+2024-07-05 01:41:32,646 INFO  [io.quarkus] (Test worker) Installed features: [agroal, cache, cdi, flyway, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

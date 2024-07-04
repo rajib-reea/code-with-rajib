@@ -1,39 +1,45 @@
-# Gradle
-.gradle/
-build/
-
-# Eclipse
+.DS_Store
+target
+*.iml
+.idea
+!.idea/runConfigurations
+.settings
 .project
 .classpath
-.settings/
-bin/
-
-# IntelliJ
-.idea
-*.ipr
-*.iml
-*.iws
-
-# NetBeans
-nb-configuration.xml
-
-# Visual Studio Code
-.vscode
-.factorypath
-
-# OSX
-.DS_Store
-
-# Vim
-*.swp
-*.swo
-
-# patch
+.vscode/
+*~
+local-test
+out
+lib
+bin
+!devtools/cli/distribution/java-binary/bin
+dependency-reduced-pom.xml
+derby.log
+hotspot.log
+.directory
+.java-version
+.graal-install
+hs_err_pid*.log
+dumps
 *.orig
 *.rej
-
-# Local environment
-.env
-
-# Plugin directory
-/.quarkus/cli/plugins/
+.factorypath
+graph-output.dot
+*.swp
+*.swo
+ObjectStore
+.gradle
+docker/distroless/bazel-*
+/.apt_generated_tests/
+quarkus.log
+quarkus.log*
+replay_*.logß
+nbactions.xml
+nb-configuration.xml
+.cache
+/lsp/
+.envrc
+.jekyll-cache
+.mvn/.develocity
+.mvn/.gradle-enterprise/
+.quarkus

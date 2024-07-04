@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - GreetingResourceTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>GreetingResourceTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/island.dev.html">island.dev</a> &gt; GreetingResourceTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">1</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">1.571s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">testHelloEndpoint()</td>
+<td class="success">1.571s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2024-07-05 01:41:24,785 WARN  [io.qua.hib.orm.dep.HibernateOrmProcessor] (build-86) Hibernate ORM is disabled because no JPA entities were found
+2024-07-05 01:41:25,590 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-31) Loaded org.testcontainers.dockerclient.UnixSocketClientProviderStrategy from ~/.testcontainers.properties, will try it first
+2024-07-05 01:41:26,213 INFO  [org.tes.doc.DockerClientProviderStrategy] (build-31) Found Docker environment with local Unix socket (unix:///var/run/docker.sock)
+2024-07-05 01:41:26,221 INFO  [org.tes.DockerClientFactory] (build-31) Docker host IP address is localhost
+2024-07-05 01:41:26,276 INFO  [org.tes.DockerClientFactory] (build-31) Connected to docker: 
+  Server Version: 24.0.2
+  API Version: 1.43
+  Operating System: Docker Desktop
+  Total Memory: 7851 MB
+2024-07-05 01:41:26,288 INFO  [org.tes.ima.PullPolicy] (build-31) Image pull policy will be performed by: DefaultPullPolicy()
+2024-07-05 01:41:26,290 INFO  [org.tes.uti.ImageNameSubstitutor] (build-31) Image name substitution will be performed by: DefaultImageNameSubstitutor (composite of 'ConfigurationFileImageNameSubstitutor' and 'PrefixingImageNameSubstitutor')
+2024-07-05 01:41:26,297 INFO  [org.tes.DockerClientFactory] (build-31) Checking the system...
+2024-07-05 01:41:26,298 INFO  [org.tes.DockerClientFactory] (build-31) ✔︎ Docker server version should be at least 1.6.0
+2024-07-05 01:41:26,510 INFO  [tc.doc.io/postgres:14] (build-31) Creating container for image: docker.io/postgres:14
+2024-07-05 01:41:27,522 INFO  [org.tes.uti.RegistryAuthLocator] (build-31) Credential helper/store (docker-credential-desktop) does not have credentials for docker.io
+2024-07-05 01:41:27,535 WARN  [tc.doc.io/postgres:14] (build-31) Reuse was requested but the environment does not support the reuse of containers
+To enable reuse of containers, you must set 'testcontainers.reuse.enable=true' in a file located at /Users/rhp/.testcontainers.properties
+2024-07-05 01:41:27,537 INFO  [tc.tes.7.0] (build-31) Creating container for image: testcontainers/ryuk:0.7.0
+2024-07-05 01:41:27,712 INFO  [org.tes.uti.RegistryAuthLocator] (build-31) Credential helper/store (docker-credential-desktop) does not have credentials for https://index.docker.io/v1/
+2024-07-05 01:41:27,869 INFO  [tc.tes.7.0] (build-31) Container testcontainers/ryuk:0.7.0 is starting: 1a14c3a75cc84754a12a8e7f1b483e7de25bc6ee7c608a011f50673a60404003
+2024-07-05 01:41:28,560 INFO  [tc.tes.7.0] (build-31) Container testcontainers/ryuk:0.7.0 started in PT1.023127S
+2024-07-05 01:41:28,595 INFO  [tc.doc.io/postgres:14] (build-31) Container docker.io/postgres:14 is starting: 29ac6b26ebb6d04e729ef413301312f6c393be65ff67e34b05cc3b3f049001a8
+2024-07-05 01:41:30,514 INFO  [tc.doc.io/postgres:14] (build-31) Container docker.io/postgres:14 started in PT4.004157S
+2024-07-05 01:41:30,517 INFO  [tc.doc.io/postgres:14] (build-31) Container is started (JDBC URL: jdbc:postgresql://localhost:65244/quarkus?loggerLevel=OFF)
+2024-07-05 01:41:30,518 INFO  [io.qua.dev.pos.dep.PostgresqlDevServicesProcessor] (build-31) Dev Services for PostgreSQL started.
+2024-07-05 01:41:30,526 INFO  [io.qua.dat.dep.dev.DevServicesDatasourceProcessor] (build-31) Dev Services for default datasource (postgresql) started - container ID is 29ac6b26ebb6
+2024-07-05 01:41:30,540 INFO  [io.qua.hib.orm.dep.dev.HibernateOrmDevServicesProcessor] (build-114) Setting quarkus.hibernate-orm.database.generation=drop-and-create to initialize Dev Services managed database
+2024-07-05 01:41:32,640 INFO  [io.quarkus] (Test worker) code-with-rajib 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.12.1) started in 11.809s. Listening on: http://localhost:8081
+2024-07-05 01:41:32,645 INFO  [io.quarkus] (Test worker) Profile test activated. 
+2024-07-05 01:41:32,646 INFO  [io.quarkus] (Test worker) Installed features: [agroal, cache, cdi, flyway, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 8.8</a> at Jul 5, 2024, 1:41:35 AM</p>
+</div>
+</div>
+</body>
+</html>
