@@ -22,10 +22,8 @@ public class OrderRepositoryTest {
     EntityManager em;
     OrderRepository orderRepository;
 
-    @BeforeEach
     @Transactional
     public void setUp() {
-        orderRepository = new OrderRepository();
         Customer customer = new Customer();
         customer.firstName = "John";
         customer.lastName = "Doe";
@@ -45,7 +43,21 @@ public class OrderRepositoryTest {
 
     @Test
     @Transactional
+    public void testFindTotalSaleAmountOfCurrentDay() {
+        orderRepository = new OrderRepository();
+        // Given
+
+        // When
+        BigDecimal result = orderRepository.findTotalSaleAmountOfCurrentDay();
+
+        //Then
+        assertNotNull(result);
+    }
+
+    @Test
+    @Transactional
     public void testFindMaxSaleDayOfTimeRange() {
+        orderRepository = new OrderRepository();
         // Given
         LocalDateTime startDate = LocalDateTime.of(2024, 7, 5, 0, 0);
         LocalDateTime endDate = LocalDateTime.of(2024, 7, 5, 0, 0);
