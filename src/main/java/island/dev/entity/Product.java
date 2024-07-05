@@ -1,78 +1,53 @@
 package island.dev.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Product extends PanacheEntityBase {
     @Id
-    @ColumnDefault("nextval('products_product_id_seq'::regclass)")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id", nullable = false)
-    private Integer id;
+    public Integer id;
 
     @Size(max = 100)
     @NotNull
     @Column(name = "name", nullable = false, length = 100)
-    private String name;
+    public String name;
 
     @Column(name = "description", length = Integer.MAX_VALUE)
-    private String description;
+    public String description;
 
     @NotNull
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    public BigDecimal price;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
-    private Instant createdAt;
+    public Instant createdAt;
 
-    public Integer getId() {
-        return id;
+    // Method to create and return a dummy Product object
+    public static Product createDummyProduct() {
+        Product product = new Product();
+        product.name = "razor";
+        product.description = "gillette razor";
+        product.price = BigDecimal.valueOf(49.00);
+        product.createdAt = Instant.now();
+        return product;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    // Method to print the dummy product for verification
+    public void printProductInfo() {
+        System.out.println("ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Description: " + description);
+        System.out.println("Price: " + price);
+        System.out.println("Created At: " + createdAt);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
 }

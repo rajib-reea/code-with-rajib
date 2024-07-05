@@ -1,67 +1,51 @@
 package island.dev.entity;
 
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
 import java.time.Instant;
 
 @Entity
 @Table(name = "wishlists")
-public class Wishlist {
+public class Wishlist extends PanacheEntityBase {
     @Id
-    @ColumnDefault("nextval('wishlists_wishlist_id_seq'::regclass)")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "wishlist_id", nullable = false)
-    private Integer id;
+    public Integer id;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "customer_id", nullable = false)
-    private Customer customer;
+    public Customer customer;
 
     @Size(max = 100)
     @NotNull
     @Column(name = "name", nullable = false, length = 100)
-    private String name;
+    public String name;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
-    private Instant createdAt;
+    public Instant createdAt;
 
-    public Integer getId() {
-        return id;
+    // Method to create and return a dummy Wishlist object
+    public static Wishlist createDummyWishlist(Customer customer) {
+        Wishlist wishlist = new Wishlist();
+        wishlist.customer = customer;
+        wishlist.name = "Doe";
+        wishlist.createdAt = Instant.now();
+        return wishlist;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    // Method to print the dummy wishlist for verification
+    public void printWishlistInfo() {
+        System.out.println("ID: " + id);
+        System.out.println("Customer: " + customer);
+        System.out.println("Name: " + name);
+        System.out.println("Created At: " + createdAt);
     }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
 }

@@ -1,81 +1,55 @@
 package island.dev.entity;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.hibernate.annotations.ColumnDefault;
-
 import java.time.Instant;
 
 @Entity
 @Table(name = "customers")
-public class Customer {
+public class Customer extends PanacheEntityBase {
     @Id
-    @ColumnDefault("nextval('customers_customer_id_seq'::regclass)")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id", nullable = false)
-    private Integer id;
+    public Integer id;
 
     @Size(max = 50)
     @NotNull
     @Column(name = "first_name", nullable = false, length = 50)
-    private String firstName;
+    public String firstName;
 
     @Size(max = 50)
     @NotNull
     @Column(name = "last_name", nullable = false, length = 50)
-    private String lastName;
+    public String lastName;
 
     @Size(max = 100)
     @NotNull
     @Column(name = "email", nullable = false, length = 100)
-    private String email;
+    public String email;
 
     @ColumnDefault("CURRENT_TIMESTAMP")
     @Column(name = "created_at")
-    private Instant createdAt;
+    public Instant createdAt;
 
-    public Integer getId() {
-        return id;
+    // Method to create and return a dummy Customer object
+    public static Customer createDummyCustomer() {
+        Customer customer = new Customer();
+        customer.firstName = "John";
+        customer.lastName = "Doe";
+        customer.email = "john.doe@example.com";
+        customer.createdAt = Instant.now();
+        return customer;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    // Method to print the dummy customer for verification
+    public void printCustomerInfo() {
+        System.out.println("ID: " + id);
+        System.out.println("First Name: " + firstName);
+        System.out.println("Last Name: " + lastName);
+        System.out.println("Email: " + email);
+        System.out.println("Created At: " + createdAt);
     }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
 }

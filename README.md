@@ -33,5 +33,15 @@ create user rajib WITH PASSWORD 'code';
 alter database with_rajib owner to rajib;
 \q
 connect: psql -h localhost -p 5432 -U  rajib -d with_rajib
+```
+
+```
+BEFORE EVERY TEST RUN:
+truncate  table order_items cascade ;
+truncate table orders cascade;
+truncate table products cascade;
+truncate table wishlists cascade ;
+truncate table wishlist_items cascade ;
+truncate table customers cascade ;
 
 ```
