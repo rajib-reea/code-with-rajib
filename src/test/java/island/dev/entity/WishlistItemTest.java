@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
+import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,38 +25,46 @@ public class WishlistItemTest {
         Customer customer = new Customer();
         customer.firstName = "John";
         customer.lastName = "Doe";
-        customer.email = "b@c.com";
+        customer.email = "e@f.com";
+        customer.createdAt= Instant.now();
         em.persist(customer);
         em.flush();
 
         Wishlist wishlist = new Wishlist();
         wishlist.customer = customer;
-        wishlist.name = "Doe";
+        wishlist.name = "my-wishlist";
+        wishlist.createdAt= Instant.now();
         em.persist(wishlist);
         em.flush();
 
         Product product = new Product();
-//        product.id = 1;
-        product.name = "Sample Product";
-        product.price=BigDecimal.valueOf(19.00);
+        product.name = "scissors";
+        product.description = "gillette scissors";
+        product.price=BigDecimal.valueOf(9.00);
+        product.createdAt=Instant.now();
         em.persist(product);
         em.flush();
 
         // When
-        WishlistItem wishlistItem = WishlistItem.createDummyWishlistItem(wishlist, product);
+        WishlistItem wishlistItem = new WishlistItem();
+        wishlistItem.wishlist=wishlist;
+        wishlistItem.product=product;
+        wishlistItem.addedAt=Instant.now();
+        em.persist(wishlistItem);
+        em.flush();
 
         // Then
+        //direct
         assertNotNull(wishlistItem);
         assertNotNull(wishlistItem.wishlist);
         assertNotNull(wishlistItem.product);
-        assertEquals("Doe", wishlistItem.wishlist.name);
+        assertEquals("my-wishlist", wishlistItem.wishlist.name);
 
-        //Persist and retrieve the order item to ensure it can be saved in the database
-        em.persist(wishlistItem);
-        em.flush();
-        OrderItem persistedWishlistItem = em.find(OrderItem.class, wishlistItem.id);
-
+        //db
+        WishlistItem persistedWishlistItem = em.find(WishlistItem.class, wishlistItem.id);
+        assertNotNull(persistedWishlistItem.wishlist);
+        assertNotNull(persistedWishlistItem.product);
         assertNotNull(persistedWishlistItem);
-        assertEquals(product.id, persistedWishlistItem.product.id);
+        assertEquals("my-wishlist", persistedWishlistItem.wishlist.name);
     }
 }

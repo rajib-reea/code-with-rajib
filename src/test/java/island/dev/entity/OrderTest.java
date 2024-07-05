@@ -6,6 +6,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @QuarkusTest
@@ -22,27 +24,29 @@ public class OrderTest {
         Customer customer = new Customer();
         customer.firstName = "John";
         customer.lastName = "Doe";
-        customer.email = "a@b.com";
-        // Persist the customer to simulate the real scenario
+        customer.email = "b@c.com";
         em.persist(customer);
         em.flush();
 
         // When
-        Order order = Order.createDummyOrder(customer);
+        Order order = new Order();
+        order.customer=customer;
+        order.orderDate= Instant.now();
+        order.totalAmount=BigDecimal.valueOf(49.00);
+        em.persist(order);
+        em.flush();
 
         // Then
+        //direct
         assertNotNull(order);
         assertNotNull(order.customer);
         assertNotNull(order.orderDate);
-        assertEquals(BigDecimal.valueOf(99.99), order.totalAmount);
+        assertEquals(BigDecimal.valueOf(49.00), order.totalAmount);
 
-        // Persist and retrieve the order to ensure it can be saved in the database
-        em.persist(order);
-        em.flush();
+        //db
         Order persistedOrder = em.find(Order.class, order.id);
-
         assertNotNull(persistedOrder);
         assertEquals(customer.firstName, persistedOrder.customer.firstName);
-        assertEquals(BigDecimal.valueOf(99.99), persistedOrder.totalAmount);
+        assertEquals(BigDecimal.valueOf(49.00), persistedOrder.totalAmount);
     }
 }

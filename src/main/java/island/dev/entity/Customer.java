@@ -39,7 +39,7 @@ public class Customer extends PanacheEntityBase {
         Customer customer = new Customer();
         customer.firstName = "John";
         customer.lastName = "Doe";
-        customer.email = "john.doe@example.com";
+        customer.email = "a@b.com";
         customer.createdAt = Instant.now();
         return customer;
     }

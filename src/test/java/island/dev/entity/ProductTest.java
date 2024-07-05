@@ -1,10 +1,10 @@
 package island.dev.entity;
 
-import com.google.inject.Inject;
 import io.quarkus.test.junit.QuarkusTest;
+import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -16,18 +16,34 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ProductTest {
     @Inject
     EntityManager em;
-    Customer customer;
-
     @Test
+    @Transactional
     public void testCreateDummyProduct() {
-        // Given
+        //Given
+
         //When
-        Product dummyProduct = Product.createDummyProduct();
-        assertNotNull(dummyProduct);
-        assertEquals("razor", dummyProduct.name);
-        assertEquals("gillette razor", dummyProduct.description);
-        assertEquals(BigDecimal.valueOf(49.00), dummyProduct.price);
-        assertNotNull(dummyProduct.createdAt);
-        dummyProduct.printProductInfo();
+        Product product = new Product();
+        product.name = "razor";
+        product.description = "gillette razor";
+        product.price = BigDecimal.valueOf(49.00);
+        product.createdAt = Instant.now();
+        em.persist(product);
+        em.flush();
+
+        //Then
+        //direct
+        assertNotNull(product);
+        assertNotNull(product.name);
+        assertNotNull(product.description);
+        assertNotNull(product.price);
+        assertNotNull(product.createdAt);
+
+        //db
+        Product persistedProduct = em.find(Product.class, product.id);
+        assertNotNull(persistedProduct);
+        assertEquals("razor", persistedProduct.name);
+        assertEquals("gillette razor", persistedProduct.description);
+        assertEquals(BigDecimal.valueOf(49.00), persistedProduct.price);
+        assertNotNull(persistedProduct.createdAt);
     }
 }

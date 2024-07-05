@@ -5,7 +5,8 @@ import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
-import java.math.BigDecimal;
+
+import java.time.Instant;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -23,27 +24,29 @@ public class WishlistTest {
         Customer customer = new Customer();
         customer.firstName = "John";
         customer.lastName = "Doe";
-        customer.email = "x@y.com";
-        // Persist the customer to simulate the real scenario
+        customer.email = "d@e.com";
         em.persist(customer);
         em.flush();
 
         // When
-        Wishlist wishlist = Wishlist.createDummyWishlist(customer);
+        Wishlist wishlist = new Wishlist();
+        wishlist.customer=customer;
+        wishlist.name="my-wishlist";
+        wishlist.createdAt= Instant.now();
+        em.persist(wishlist);
+        em.flush();
 
         // Then
+        //direct
         assertNotNull(wishlist);
         assertNotNull(wishlist.customer);
         assertNotNull(wishlist.createdAt);
-        assertEquals("Doe", wishlist.name);
+        assertEquals("my-wishlist", wishlist.name);
 
-        // Persist and retrieve the order to ensure it can be saved in the database
-        em.persist(wishlist);
-        em.flush();
+        //db
         Wishlist persistedWishlist = em.find(Wishlist.class, wishlist.id);
-
         assertNotNull(persistedWishlist);
         assertEquals(customer.firstName, persistedWishlist.customer.firstName);
-        assertEquals("Doe", persistedWishlist.name);
+        assertEquals("my-wishlist", persistedWishlist.name);
     }
 }
