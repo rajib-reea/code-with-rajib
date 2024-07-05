@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CustomerTest {
     @Inject
     EntityManager em;
+
     @Test
     @Transactional
     public void testCreateDummyCustomer() {

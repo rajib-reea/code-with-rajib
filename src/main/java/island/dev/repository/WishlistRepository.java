@@ -7,7 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import java.util.List;
 @ApplicationScoped
 public class WishlistRepository implements PanacheRepository<Wishlist> {
-    public List<Wishlist> findByCustomerId(Long customerId) {
+    public List<Wishlist> findByCustomerId(Integer customerId) {
         return list("customer.id", customerId);
     }
 }

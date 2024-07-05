@@ -3,6 +3,7 @@ package island.dev.repository;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import island.dev.entity.Order;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.persistence.Tuple;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,11 +17,12 @@ public class OrderRepository implements PanacheRepository<Order> {
                 .singleResultOptional().orElse(BigDecimal.ZERO);
     }
 
-    public List findMaxSaleDayOfTimeRange(LocalDateTime startDate, LocalDateTime endDate) {
+    public List<Tuple> findMaxSaleDayOfTimeRange(LocalDateTime startDate, LocalDateTime endDate) {
         return getEntityManager()
-                .createQuery("SELECT o.orderDate, SUM(o.totalAmount) FROM Order o WHERE o.orderDate BETWEEN :startDate AND :endDate GROUP BY o.orderDate ORDER BY SUM(o.totalAmount) DESC")
+                .createQuery("SELECT o.orderDate as orderDate, SUM(o.totalAmount) as totalAmount FROM Order o WHERE DATE(o.orderDate) BETWEEN :startDate AND :endDate GROUP BY o.orderDate ORDER BY SUM(o.totalAmount) DESC LIMIT 1", Tuple.class)
                 .setParameter("startDate", startDate)
                 .setParameter("endDate", endDate)
                 .getResultList();
     }
+
 }
