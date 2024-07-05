@@ -33,6 +33,9 @@ create user rajib WITH PASSWORD 'code';
 alter database with_rajib owner to rajib;
 \q
 connect: psql -h localhost -p 5432 -U  rajib -d with_rajib
+
+DB Schema: src/main/resources/db/migration/v1_code_with_rajib.sql
+[Have not written migration file.]
 ```
 
 ```
