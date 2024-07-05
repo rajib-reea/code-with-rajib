@@ -24,3 +24,14 @@ B. Considerations:
 1. create a sql file(for us this is first.sql) and now we can make connection to
 database and we can see the jpa explorer.
 ```
+
+```
+DATABASE:
+psql -U postgres
+create database with_rajib;
+create user rajib WITH PASSWORD 'code';
+alter database with_rajib owner to rajib;
+\q
+connect: psql -h localhost -p 5432 -U  rajib -d with_rajib
+
+```
