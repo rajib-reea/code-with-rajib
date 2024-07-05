@@ -44,6 +44,7 @@ public class ApiResource {
     @Path("/sales/max")
     public Response getMaxSaleDay(@QueryParam("startDate") String startDateStr,
                                   @QueryParam("endDate") String endDateStr) {
+        orderRepository=new OrderRepository();
         LocalDateTime startDate = LocalDateTime.parse(startDateStr);
         LocalDateTime endDate = LocalDateTime.parse(endDateStr);
         List<Tuple> result = orderRepository.findMaxSaleDayOfTimeRange(startDate, endDate);
@@ -57,6 +58,7 @@ public class ApiResource {
     @GET
     @Path("/sales/top/all-time")
     public Response getTop5SellingItemsAllTime() {
+        orderItemRepository=new OrderItemRepository();
         List<String> topSellingItems = orderItemRepository.findTop5SellingItemsAllTime();
         return Response.ok(topSellingItems).build();
     }
@@ -65,6 +67,7 @@ public class ApiResource {
     @GET
     @Path("/sales/top/last-month")
     public Response getTopSellingItemsLastMonth() {
+        orderItemRepository=new OrderItemRepository();
         List<String > topSellingItems = orderItemRepository.findTop5SellingItemsLastMonth();
         return Response.ok(topSellingItems).build();
     }
